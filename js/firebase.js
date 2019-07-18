@@ -1,5 +1,6 @@
 
 function saveToFirebase() {
+    document.getElementById("loginAlert").innerText = "";
     var email = document.getElementById("inputEmail").value;
     var pw = document.getElementById("inputPassword").value;
     var confPw = document.getElementById("confirmPassword").value;
