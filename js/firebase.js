@@ -29,6 +29,7 @@ function saveToFirebase() {
                 console.log('error' + error);
                 error(); // some error method
             });
+        document.getElementById("course").innerText = "Updated Lesson?";
     } else {
         document.getElementById("loginAlert").innerText = "Passwords do not match";
     }
