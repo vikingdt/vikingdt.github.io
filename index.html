@@ -64,7 +64,8 @@
           <div class="ml-auto w-25">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
-                <li class="cta"><a action="javascript:firebase.checkLogin" id="loginButton" href="login.html" class="nav-link" onclick="signOut()"><span id="loginSpan">Sign In</span></a></li>
+                <li class="cta" style="visibility: collapse;" id="inlist"><a id="loginButton" href="login.html" class="nav-link" onclick="signOut()"><span id="loginSpan">Sign In</span></a></li>
+                <li class="cta" style="visibility: collapse;" id="outlist"><a href="login.html" class="nav-link" onclick="signOut()"><span>Sign Out</span></a></li>
               </ul>
             </nav>
             <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
@@ -83,6 +84,7 @@
                 <div class="col-lg-10 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100" id="homeText">Learn From The Expert</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
+                  <p data-aos="fade-up" data-aos-delay="300" id="homesignout" style="visibility: collapse"><a href="#" class="btn btn-primary py-3 px-5 btn-pill" onclick="signOut()">Sign out</a></p>
                 </div>
               </div>
             </div>

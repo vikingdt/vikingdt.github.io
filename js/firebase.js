@@ -62,10 +62,14 @@ function checkLogin(){
     if (user) {
         console.log(user);
         document.getElementById("homeText").innerText = "Signed in";
-        document.getElementById("loginSpan").innerHTML = "Sign out";
+        document.getElementById("outlist").style.visibility = 'visible';
+        document.getElementById("inlist").style.visibility = 'collapse';
+        document.getElementById("homesignout").style.visibility = 'visible';
     } else {
         console.log(user);
         document.getElementById("loginSpan").innerHTML = "Sign in";
+        document.getElementById("outlist").style.visibility = 'collapse';
+        document.getElementById("inlist").style.visibility = 'visible';
     }
 }
 
