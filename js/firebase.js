@@ -53,49 +53,53 @@ function login(){
     var email = document.getElementById("loginEmail").value;
     var pw = document.getElementById("loginPassword").value;
 
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
-
-    firebase.auth().signInWithEmailAndPassword(email, pw).then(user => {
-    // Get the user's ID token as it is needed to exchange for a session cookie.
-    return user.getIdToken().then(idToken => {
-        // Session login endpoint is queried and the session cookie is set.
-        // CSRF protection should be taken into account.
-        // ...
-        const csrfToken = getCookie('csrfToken'),
-        return postIdTokenToSessionLogin('/sessionLogin', idToken, csrfToken)
-    });
-    }).then(() => {
-        // A page redirect would suffice as the persistence is set to NONE.
-        res.redirect('/index.html');
-        return firebase.auth().signOut();
-    }).then(() => {
-        window.location.assign('/profile');
-    }).catch(function(error) {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    firebase.auth().signInWithEmailAndPassword(email, pw).catch(function(error) {
         document.getElementById("loginAlert").innerText = "Wrong email or password";
-      });;
+        console.log(error);
+    });
+
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+        window.location = 'index.html';
+    }
 }
 
 function signOut(){
-    app.post('/sessionLogout', (req, res) => {
-        res.clearCookie('session');
-        res.redirect('/login');
-    });
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+            console.log("signed out");
+            window.location = 'index.html';
+        }).catch(function(error) {
+            // An error happened.
+            console.log(error);
+        });
+    } else {
+        console.log("no user");
+        window.location='login.html'
+    }
 }
 
 function checkLogin(){
     var user = firebase.auth().currentUser;
 
     if (user) {
-        document.getElementById("loginSpan").innerHTML = "Sign out"
-        document.getElementById("loginButton").onclick = 
-            firebase.auth().signOut().then(function() {
-                // Sign-out successful.
-            }).catch(function(error) {
-                // An error happened.
-            });
+        document.getElementById("loginSpan").innerHTML = "Sign out";
     } else {
-        document.getElementById("loginSpan").innerHTML = "Log in"
+        document.getElementById("loginSpan").innerHTML = "Log in";
     }
 }
 
-checkLogin();
+function checkWebpage(){
+    var user = firebase.auth().currentUser;
+
+    if(user){
+        console.log("access allowed");
+    } else {
+        window.location = 'login.html';
+    }
+}
