@@ -56,7 +56,7 @@
                 <li><a href="#courses-section" class="nav-link">Courses</a></li>
                 <li><a href="#programs-section" class="nav-link">Programs</a></li>
                 <li><a href="#teachers-section" class="nav-link">Teachers</a></li>
-                <li><a href="studentportal.html" class="nav-link">Student Portal</a></li>
+                <li><a href="#teachers-section" class="nav-link" onclick="checkWebpage()">Student Portal</a></li>
               </ul>
             </nav>
           </div>
@@ -64,7 +64,7 @@
           <div class="ml-auto w-25">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
-                <li class="cta"><a action="javascript:firebase.checkLogin" id="loginButton" href="login.html" class="nav-link" onclick="signOut()"><span id="loginSpan">Sign Out</span></a></li>
+                <li class="cta"><a action="javascript:firebase.checkLogin" id="loginButton" href="login.html" class="nav-link" onclick="signOut()"><span id="loginSpan">Login</span></a></li>
               </ul>
             </nav>
             <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
@@ -487,8 +487,8 @@
           <div class="col-md-3 ml-auto">
             <h3>Links</h3>
             <ul class="list-unstyled footer-links">
-              <li><a href="#home-section">Home</a></li>
-              <li><a href="#courses-section">Upcoming Tournaments</a></li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Courses</a></li>
               <li><a href="#">Programs</a></li>
               <li><a href="#">Teachers</a></li>
             </ul>
@@ -565,7 +565,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/firebase.js"></script>
-  <script>checkLogin()</script>
+  <script>checkWebpage()</script>
     
   </body>
 </html>

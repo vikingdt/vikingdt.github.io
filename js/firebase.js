@@ -1,39 +1,5 @@
 
-function saveToFirebase() {
-    document.getElementById("loginAlert").innerText = "";
-    var email = document.getElementById("inputEmail").value;
-    var pw = document.getElementById("inputPassword").value;
-    var confPw = document.getElementById("confirmPassword").value;
-    var checkEmail;
-
-    var ref = firebase.database().ref('accounts');
-
-    ref.on("value", function(snapshot) {
-        console.log(snapshot.val());
-        if(checkEmail !== email){
-            checkEmail=snapshot.val().valueOf('email');
-        }
-    }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-    });
-
-    if(pw===confPw && email !== checkEmail){
-        var emailObject = {
-            email: email,
-            password: pw
-        };
-        firebase.database().ref('accounts').push().set(emailObject)
-            .then(function(snapshot) {
-                console.log('success'); // some success method
-            }, function(error) {
-                console.log('error' + error);
-                error(); // some error method
-            });
-        document.getElementById("course").innerText = "Updated Lesson?";
-    } else {
-        document.getElementById("loginAlert").innerText = "Passwords do not match";
-    }
-}
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 
 function signup(){
     var email = document.getElementById("regEmail").value;
@@ -44,8 +10,11 @@ function signup(){
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
+            document.getElementById("loginAlert").innerText = "Account already exists with this email";
             // ...
         });
+    } else {
+        document.getElementById("loginAlert").innerText = "Passwords don't match"
     }
 }
 
@@ -89,8 +58,6 @@ function checkLogin(){
 
     if (user) {
         document.getElementById("loginSpan").innerHTML = "Sign out";
-    } else {
-        document.getElementById("loginSpan").innerHTML = "Log in";
     }
 }
 
@@ -100,6 +67,7 @@ function checkWebpage(){
     if(user){
         console.log("access allowed");
     } else {
+        console.log("no user");
         window.location = 'login.html';
     }
 }
