@@ -62,7 +62,7 @@
           <div class="ml-auto w-25">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
-                <li class="cta"><a href="#contact-section" class="nav-link"><span>Contact Us</span></a></li>
+                <li class="cta"><a id="loginButton" href="login.html" class="nav-link"><span id="loginSpan">Login</span></a></li>
               </ul>
             </nav>
             <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
@@ -79,31 +79,9 @@
           <div class="row align-items-center">
             <div class="col-12">
               <div class="row align-items-center">
-                <div class="col-lg-6 mb-4">
+                <div class="col-lg-10 mb-4">
                   <h1  data-aos="fade-up" data-aos-delay="100">Learn From The Expert</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
-                  <p data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary py-3 px-5 btn-pill">Admission Now</a></p>
-
-                </div>
-
-                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form id="email" action="javascript:saveToFirebase()" method="post" class="form-box">
-                    <h3 class="h4 text-black mb-4">Sign Up</h3>
-                    <p id="loginAlert" style="color:red"></p>
-                    <div class="form-group">
-                      <input id="inputEmail" type="text" class="form-control" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                      <input id="inputPassword" type="password" class="form-control" placeholder="Password" required>
-                    </div>
-                    <div class="form-group mb-4">
-                      <input id="confirmPassword" type="password" class="form-control" placeholder="Re-type Password" required>
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
-                    </div>
-                  </form>
-
                 </div>
               </div>
             </div>
@@ -559,9 +537,6 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
-
-  Copy and paste these scripts into the bottom of your <body> tag, but before you use any Firebase services:
-
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
