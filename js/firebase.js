@@ -1,5 +1,5 @@
-
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+user = firebase.auth().currentUser;
 
 function signup(){
     var email = document.getElementById("regEmail").value;
@@ -28,20 +28,22 @@ function login(){
         console.log(error);
     });
 
-    var user = firebase.auth().currentUser;
+    user = firebase.auth().currentUser;
 
     if (user) {
-        window.location = 'index.html';
+        window.history.back();
+        checkLogin();
     }
 }
 
 function signOut(){
-    var user = firebase.auth().currentUser;
+
+    user = firebase.auth().currentUser;
 
     if (user) {
         firebase.auth().signOut().then(function() {
             // Sign-out successful.
-            console.log("signed out");
+            console.log("user exists. signed out");
             window.location = 'index.html';
         }).catch(function(error) {
             // An error happened.
@@ -54,20 +56,37 @@ function signOut(){
 }
 
 function checkLogin(){
-    var user = firebase.auth().currentUser;
+
+    user = firebase.auth().currentUser;
 
     if (user) {
+        console.log(user);
+        document.getElementById("homeText").innerText = "Signed in";
         document.getElementById("loginSpan").innerHTML = "Sign out";
+    } else {
+        console.log(user);
+        document.getElementById("loginSpan").innerHTML = "Sign in";
     }
 }
 
 function checkWebpage(){
-    var user = firebase.auth().currentUser;
 
-    if(user){
-        console.log("access allowed");
+    if(firebase.apps.length >= 0){
+
+        user = firebase.auth().currentUser;
+
+        if(user){
+            console.log("access allowed");
+        } else {
+            console.log("no user");
+            window.location = 'login.html';
+        }
     } else {
-        console.log("no user");
-        window.location = 'login.html';
+        console.log("firebase not loaded");
+        checkWebpage();
     }
+}
+
+function openContent(){
+    document.getElementById("coursecontent").style.visibility='visible';
 }
