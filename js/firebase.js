@@ -70,7 +70,9 @@ function login(){
         return firebase.auth().signOut();
     }).then(() => {
         window.location.assign('/profile');
-    });
+    }).catch(function(error) {
+        document.getElementById("loginAlert").innerText = "Wrong email or password";
+      });;
 }
 
 function signOut(){
