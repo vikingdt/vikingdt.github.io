@@ -85,16 +85,16 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="" method="post" class="form-box">
+                  <form id="email" action="javascript:saveToFirebase()" method="post" class="form-box">
                     <h3 class="h4 text-black mb-4">Sign Up</h3>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Email Addresss">
+                      <input id="inputEmail" type="text" class="form-control" placeholder="Email Address" required>
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input id="inputPassword" type="password" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group mb-4">
-                      <input type="password" class="form-control" placeholder="Re-type Password">
+                      <input id="confirmPassword" type="password" class="form-control" placeholder="Re-type Password" required>
                     </div>
                     <div class="form-group">
                       <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
@@ -557,8 +557,34 @@
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
 
-  
+  Copy and paste these scripts into the bottom of your <body> tag, but before you use any Firebase services:
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDoc1p7fvWTZkPExHiZ5MLD8WebATSrTgc",
+      authDomain: "vikingdt-b0d3d.firebaseapp.com",
+      databaseURL: "https://vikingdt-b0d3d.firebaseio.com",
+      projectId: "vikingdt-b0d3d",
+      storageBucket: "",
+      messagingSenderId: "536600214279",
+      appId: "1:536600214279:web:051739f4498b53b7"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
   <script src="js/main.js"></script>
+  <script src="js/firebase.js"></script>
     
   </body>
 </html>
